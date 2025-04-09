@@ -44,6 +44,7 @@ const reviews = [
   
   const prevBtn   = document.querySelector('.prev-btn');
   const nextBtn   = document.querySelector('.next-btn');
+  const randomBtn = document.querySelector('.random-btn');
 
   // set starting item
   let currentItem = 0;
@@ -79,6 +80,28 @@ const reviews = [
   });
  
   // show prev person
+prevBtn.addEventListener('click', (e)=>{
+  e.preventDefault();
+  
+  currentItem --;
 
+  if(currentItem < 0){
+    currentItem = reviews.length - 1;
+  }
 
+  showPerson(currentItem);
+});
+
+  // randomPerson
+randomBtn.addEventListener('click', (e)=>{
+  e.preventDefault();
+
+  function randomNum(){
+    return Math.floor(Math.random() * reviews.length);
+  }
+  
+  let currentItem = randomNum();
+
+  showPerson(currentItem);
+});
 
